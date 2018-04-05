@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.advicetec</groupId>
+	<artifactId>iotmanufacturing</artifactId>
+	<version>0.0.1</version>
+	<name>Antlr 4 Archetype</name>
+	<packaging>jar</packaging>
+
+	<properties>
+	    <java.version>1.8</java.version>
+        <caffeine.version>2.3.5</caffeine.version>
+        <rxjava.version>2.0.2</rxjava.version>
+	    
+		<antlr4.version>4.5.2</antlr4.version>
+		<antlr4.plugin.version>4.5.2</antlr4.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<lib-restlet-version>2.3.8</lib-restlet-version>
+		<lib-jackson-version>2.4.4</lib-jackson-version>
+		<lib-hamcrest-version>1.3</lib-hamcrest-version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.com</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-maven-plugin</artifactId>
+				<version>${antlr4.plugin.version}</version>
+				<configuration>
+					<arguments>
+						<argument>-visitor</argument>
+					</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>antlr4</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+                   <source>${java.version}</source>
+                   <target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+					<failOnMissingWebXml>1.8</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-runtime</artifactId>
+			<version>${antlr4.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-maven-plugin</artifactId>
+			<version>${antlr4.plugin.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+   
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->  
+ 	    <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.3-1100-jdbc41</version>
+        </dependency>   
+
+        <dependency>
+   		    <groupId>org.eclipse.paho</groupId>
+   		    <artifactId>org.eclipse.paho.mqtt.utility</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        
+    	<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.11</version>
+      		<scope>test</scope>
+    	</dependency>
+
+    	<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.jackson</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.simple</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.slf4j</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.jsslutils</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.jackson</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>	
+
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet.ext.json</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.xml</artifactId>
+			<version>${lib-restlet-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+       <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+       <dependency>
+           <groupId>org.codehaus.jackson</groupId>
+           <artifactId>jackson-mapper-asl</artifactId>
+           <version>1.9.9</version>
+       </dependency>
+
+       <dependency>
+           <groupId>org.apache.logging.log4j</groupId>
+           <artifactId>log4j-api</artifactId>
+           <version>2.6.1</version>
+       </dependency>
+
+       <dependency>
+           <groupId>org.apache.logging.log4j</groupId>
+           <artifactId>log4j-core</artifactId>
+           <version>2.6.1</version>
+       </dependency>
+
+       <!-- https://mvnrepository.com/artifact/com.ghgande/j2mod -->
+       <dependency>
+         <groupId>com.ghgande</groupId>
+         <artifactId>j2mod</artifactId>
+         <version>2.3.3</version>
+       </dependency>
+
+       <dependency>
+       	<groupId>com.microsoft.sqlserver</groupId>
+       	<artifactId>mssql-jdbc</artifactId>
+       	<version>6.2.0.jre8</version>
+       </dependency>
+
+	   <!-- https://mvnrepository.com/artifact/org.scala-saddle/google-rfc-2445 -->
+	   <dependency>
+    	  <groupId>org.scala-saddle</groupId>
+    	  <artifactId>google-rfc-2445</artifactId>
+    	  <version>20110304</version>
+	   </dependency>
+       
+       <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+       <dependency>
+          <groupId>c3p0</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>0.9.1.2</version>
+       </dependency>
+       
+       
+	</dependencies>
+
+</project>
